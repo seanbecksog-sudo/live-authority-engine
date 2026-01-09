@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Authority Engine</title>
+    <title>Authority Engine</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background: #0d1117; color: white; }
-        button { padding: 20px; font-size: 1.2rem; background: #238636; color: white; border: none; border-radius: 6px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,255,0,0.2); }
-        button:active { transform: scale(0.95); }
+        body { background-color: black; color: #00FF00; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; }
+        .btn { background-color: #00FF00; color: black; border: none; padding: 20px 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; border-radius: 5px; margin: 10px; text-decoration: none; }
+        .btn-alt { background-color: transparent; color: #00FF00; border: 2px solid #00FF00; }
+        #log { margin-top: 30px; width: 80%; max-width: 400px; border-top: 1px solid #333; padding-top: 20px; }
     </style>
 </head>
 <body>
-    <h1>Human Presence Protocol</h1>
-    <p>Verification Layer: <strong>Active</strong></p>
-    
-    <button onclick="verifyHuman()">VERIFY HUMAN PRESENCE</button>
-
-    <script src="authority.js"></script>
+    <h1>HUMAN PRESENCE PROTOCOL</h1>
+    <p>STATUS: <span style="color: #00FF00;">ACTIVE</span></p>
+    <button class="btn" onclick="verify()">VERIFY HUMAN PRESENCE</button>
+    <br>
+    <a href="mailto:YOUR-EMAIL-HERE@GMAIL.COM" class="btn btn-alt">CONTACT FOR LICENSING</a>
+    <div id="log">
+        <h3>AUTHORITY LOG</h3>
+        <div id="results">Waiting for input...</div>
+    </div>
+    <script>
+        function verify() {
+            const time = new Date().toUTCString();
+            alert("VERIFIED\nTime: " + time);
+            const res = document.getElementById('results');
+            res.innerHTML = "Success: " + time + "<br>" + res.innerHTML;
+        }
+    </script>
 </body>
 </html>
