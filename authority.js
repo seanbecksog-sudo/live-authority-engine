@@ -3,40 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authority Engine</title>
+    <title>Sovereign Authority Engine</title>
     <style>
-        body { background-color: black; color: #00FF00; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; text-align: center; }
-        .box { border: 1px solid #00FF00; padding: 20px; max-width: 500px; margin-bottom: 20px; }
-        .btn { background-color: #00FF00; color: black; border: none; padding: 20px 40px; font-size: 1.2rem; cursor: pointer; font-weight: bold; width: 100%; max-width: 400px; transition: 0.3s; }
-        .btn:hover { background-color: #008800; }
-        .btn-alt { background-color: transparent; color: #00FF00; border: 2px solid #00FF00; margin-top: 15px; text-decoration: none; display: inline-block; padding: 10px 20px; }
-        #log { margin-top: 30px; width: 80%; max-width: 400px; border-top: 1px solid #333; padding-top: 20px; }
-        h1 { margin-bottom: 5px; }
-        p { color: white; line-height: 1.5; }
+        body { background-color: black; color: #00FF00; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; text-align: center; }
+        .box { border: 2px solid #00FF00; padding: 30px; max-width: 500px; box-shadow: 0 0 15px #00FF00; }
+        .btn { background-color: #00FF00; color: black; border: none; padding: 20px 40px; font-size: 1.3rem; cursor: pointer; font-weight: bold; width: 100%; margin-top: 20px; text-transform: uppercase; }
+        .btn:active { transform: scale(0.98); background-color: #008800; }
+        #results { margin-top: 25px; color: white; font-size: 1.1rem; border-top: 1px solid #333; padding-top: 20px; word-break: break-all; }
+        .coord { color: #00FF00; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <h1>HUMAN PRESENCE PROTOCOL</h1>
-    <p style="color: #00FF00; margin-bottom: 25px;">Verified Temporal & Geospatial Locking System</p>
-
     <div class="box">
-        <h3>WHAT IS THIS?</h3>
-        <p>This engine stops AI "Deepfake" scams. It forces a user to prove they are physically present at a specific coordinate in real-time.</p>
+        <h1 style="margin:0;">AUTHORITY ENGINE</h1>
+        <p style="color: #00FF00; letter-spacing: 2px;">V.2026.PROT</p>
+        <p>Proving physical human presence via hardware-level geospatial attestation.</p>
+        
+        <button class="btn" onclick="triggerEngine()">VERIFY PRESENCE</button>
+        
+        <div id="results">READY FOR HANDSHAKE...</div>
     </div>
 
-    <button class="btn" onclick="verifyHuman()">VERIFY HUMAN PRESENCE</button>
+    <script>
+        function triggerEngine() {
+            const display = document.getElementById('results');
+            display.innerHTML = "REQUESTING HARDWARE ACCESS...";
 
-    <br>
-
-    <a href="mailto:Seanbecksog@gmail.com?subject=Licensing Inquiry" class="btn btn-alt">Inquiry: Licensing / Contact</a>
-
-    <div id="log">
-        <h3>AUTHORITY LOG</h3>
-        <div id="results">Waiting for input...</div>
-    </div>
-
-    <script src="authority.js"></script>
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lon = position.coords.longitude;
+                        const time = new Date().toUTCString();
+                        
+                        // THE MONEY SHOT OUTPUT
+                        display.innerHTML = `
+                            <span style="color:red;">VERIFIED</span><br>
+                            LAT: <span class="coord">${lat}</span><br>
+                            LON: <span class="coord">${lon}</span><br>
+                            TIME: ${time}
+                        `;
+                        
+                        alert(`SUCCESS\nLAT: ${lat}\nLON: ${lon}\nTIME: ${time}`);
+                    },
+                    (error) => {
+                        display.innerHTML = "ERROR: LOCATION DENIED. PLEASE ENABLE GPS.";
+                        console.error(error);
+                    },
+                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+                );
+            } else {
+                display.innerHTML = "ERROR: HARDWARE NOT SUPPORTED.";
+            }
+        }
+    </script>
 
 </body>
 </html>
