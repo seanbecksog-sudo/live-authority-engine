@@ -12,24 +12,22 @@
     </style>
 </head>
 <body>
-
     <div class="box">
         <h1>AUTHORITY ENGINE</h1>
         <p>Proving physical human presence.</p>
         <button class="btn" onclick="runGPS()">VERIFY PRESENCE</button>
         <div id="results">READY...</div>
     </div>
-
     <script>
         function runGPS() {
             const display = document.getElementById('results');
-            display.innerHTML = "LOCATING HARDWARE...";
+            display.innerHTML = "LOCATING...";
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition((position) => {
                     const lat = position.coords.latitude;
                     const lon = position.coords.longitude;
                     const time = new Date().toUTCString();
-                    display.innerHTML = `<span style="color:red;">VERIFIED</span><br>LAT: ${lat}<br>LON: ${lon}<br>TIME: ${time}`;
+                    display.innerHTML = `<span style="color:red;font-weight:bold;">VERIFIED</span><br>LAT: ${lat}<br>LON: ${lon}<br>TIME: ${time}`;
                     alert("SUCCESS\nGPS LOCKED");
                 }, (error) => {
                     display.innerHTML = "ERROR: ENABLE GPS IN SETTINGS";
@@ -37,6 +35,5 @@
             }
         }
     </script>
-
 </body>
 </html>
