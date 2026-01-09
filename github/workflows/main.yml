@@ -1,0 +1,10 @@
+name: Fixed Workflow
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Status Check
+        run: echo "System is active"
