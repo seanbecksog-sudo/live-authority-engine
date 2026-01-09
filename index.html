@@ -3,44 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authority Engine</title>
+    <title>Sovereign Authority Engine</title>
     <style>
-        body { background-color: black; color: #00FF00; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; padding: 20px; }
-        .box { border: 1px solid #00FF00; padding: 20px; max-width: 500px; margin-bottom: 20px; background: #050505; }
-        .btn { background-color: #00FF00; color: black; border: none; padding: 20px 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; border-radius: 5px; margin: 10px; text-decoration: none; display: inline-block; }
-        .btn-alt { background-color: transparent; color: #00FF00; border: 2px solid #00FF00; }
-        #log { margin-top: 30px; width: 80%; max-width: 400px; border-top: 1px solid #333; padding-top: 20px; }
-        h1 { margin-bottom: 5px; }
-        p { color: white; line-height: 1.5; }
+        body { background-color: black; color: #00FF00; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; text-align: center; }
+        .box { border: 2px solid #00FF00; padding: 20px; max-width: 500px; }
+        .btn { background-color: #00FF00; color: black; border: none; padding: 20px 40px; font-size: 1.2rem; cursor: pointer; font-weight: bold; width: 100%; margin-top: 20px; }
+        #results { margin-top: 25px; color: white; border-top: 1px solid #333; padding-top: 20px; }
     </style>
 </head>
 <body>
 
-    <h1>HUMAN PRESENCE PROTOCOL</h1>
-    <p style="color: #00FF00; margin-bottom: 25px;">Verified Temporal Locking System</p>
-
     <div class="box">
-        <h3>WHAT IS THIS?</h3>
-        <p>This engine stops AI "Deepfake" scams. It forces a user to prove they are physically present by generating a unique, un-fakeable security log in real-time.</p>
-    </div>
-
-    <button class="btn" onclick="verify()">VERIFY HUMAN PRESENCE</button>
-    
-    <br>
-
-    <a href="mailto:Seanbecksog@gmail.com?subject=Licensing Inquiry" class="btn btn-alt">CONTACT FOR LICENSING</a>
-
-    <div id="log">
-        <h3>AUTHORITY LOG</h3>
-        <div id="results">Waiting for input...</div>
+        <h1>AUTHORITY ENGINE</h1>
+        <p>Proving physical human presence.</p>
+        <button class="btn" onclick="runGPS()">VERIFY PRESENCE</button>
+        <div id="results">READY...</div>
     </div>
 
     <script>
-        function verify() {
-            const time = new Date().toUTCString();
-            alert("VERIFIED\nTime: " + time);
-            const res = document.getElementById('results');
-            res.innerHTML = "Success: " + time + "<br>" + res.innerHTML;
+        function runGPS() {
+            const display = document.getElementById('results');
+            display.innerHTML = "LOCATING HARDWARE...";
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition((position) => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    const time = new Date().toUTCString();
+                    display.innerHTML = `<span style="color:red;">VERIFIED</span><br>LAT: ${lat}<br>LON: ${lon}<br>TIME: ${time}`;
+                    alert("SUCCESS\nGPS LOCKED");
+                }, (error) => {
+                    display.innerHTML = "ERROR: ENABLE GPS IN SETTINGS";
+                }, { enableHighAccuracy: true });
+            }
         }
     </script>
 
