@@ -5,23 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authority Engine</title>
     <style>
-        body { background-color: black; color: #00FF00; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; }
+        body { background-color: black; color: #00FF00; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; padding: 20px; }
+        .box { border: 1px solid #00FF00; padding: 20px; max-width: 500px; margin-bottom: 20px; background: #050505; }
         .btn { background-color: #00FF00; color: black; border: none; padding: 20px 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; border-radius: 5px; margin: 10px; text-decoration: none; display: inline-block; }
         .btn-alt { background-color: transparent; color: #00FF00; border: 2px solid #00FF00; }
         #log { margin-top: 30px; width: 80%; max-width: 400px; border-top: 1px solid #333; padding-top: 20px; }
-        .status { color: white; font-size: 0.8rem; margin-bottom: 20px; }
+        h1 { margin-bottom: 5px; }
+        p { color: white; line-height: 1.5; }
     </style>
 </head>
 <body>
 
     <h1>HUMAN PRESENCE PROTOCOL</h1>
-    <p class="status">ENGINE STATUS: <span style="color: #00FF00;">ACTIVE</span></p>
+    <p style="color: #00FF00; margin-bottom: 25px;">Verified Temporal Locking System</p>
+
+    <div class="box">
+        <h3>WHAT IS THIS?</h3>
+        <p>This engine stops AI "Deepfake" scams. It forces a user to prove they are physically present by generating a unique, un-fakeable security log in real-time.</p>
+    </div>
 
     <button class="btn" onclick="verify()">VERIFY HUMAN PRESENCE</button>
     
     <br>
 
-    <a href="mailto:Seanbecksog@gmail.com" class="btn btn-alt">CONTACT FOR LICENSING</a>
+    <a href="mailto:Seanbecksog@gmail.com?subject=Licensing Inquiry" class="btn btn-alt">CONTACT FOR LICENSING</a>
 
     <div id="log">
         <h3>AUTHORITY LOG</h3>
