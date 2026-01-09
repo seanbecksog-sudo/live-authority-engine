@@ -6,21 +6,28 @@
     <title>Authority Engine</title>
     <style>
         body { background-color: black; color: #00FF00; font-family: monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; }
-        .btn { background-color: #00FF00; color: black; border: none; padding: 20px 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; border-radius: 5px; margin: 10px; text-decoration: none; }
+        .btn { background-color: #00FF00; color: black; border: none; padding: 20px 40px; font-size: 1.2rem; font-weight: bold; cursor: pointer; border-radius: 5px; margin: 10px; text-decoration: none; display: inline-block; }
         .btn-alt { background-color: transparent; color: #00FF00; border: 2px solid #00FF00; }
         #log { margin-top: 30px; width: 80%; max-width: 400px; border-top: 1px solid #333; padding-top: 20px; }
+        .status { color: white; font-size: 0.8rem; margin-bottom: 20px; }
     </style>
 </head>
 <body>
+
     <h1>HUMAN PRESENCE PROTOCOL</h1>
-    <p>STATUS: <span style="color: #00FF00;">ACTIVE</span></p>
+    <p class="status">ENGINE STATUS: <span style="color: #00FF00;">ACTIVE</span></p>
+
     <button class="btn" onclick="verify()">VERIFY HUMAN PRESENCE</button>
+    
     <br>
-    <a href="mailto:YOUR-EMAIL-HERE@GMAIL.COM" class="btn btn-alt">CONTACT FOR LICENSING</a>
+
+    <a href="mailto:Seanbecksog@gmail.com" class="btn btn-alt">CONTACT FOR LICENSING</a>
+
     <div id="log">
         <h3>AUTHORITY LOG</h3>
         <div id="results">Waiting for input...</div>
     </div>
+
     <script>
         function verify() {
             const time = new Date().toUTCString();
@@ -29,5 +36,6 @@
             res.innerHTML = "Success: " + time + "<br>" + res.innerHTML;
         }
     </script>
+
 </body>
 </html>
